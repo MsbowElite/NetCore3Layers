@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core3Layers.API.Models;
-using Core3LayersAPI.Core.Models;
 
 namespace Core3Layers.API.Helpers
 {

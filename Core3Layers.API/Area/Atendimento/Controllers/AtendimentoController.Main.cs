@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core3LayersAPI.Core.Interfaces;
-using Core3LayersAPI.Infrastructure.Interfaces;
 
 namespace Core3Layers.API.Area.Atendimento.Controllers
 {

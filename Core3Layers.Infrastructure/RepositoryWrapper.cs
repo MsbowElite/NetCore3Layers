@@ -1,4 +1,4 @@
-﻿using Core3LayersAPI.Infrastructure.Interfaces;
+﻿using Core3LayersAPI.Core.Interfaces;
 
 namespace Core3LayersAPI.Infrastructure
 {

@@ -5,7 +5,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Core3LayersAPI.Core.Interfaces;
-using Core3LayersAPI.Infrastructure.Interfaces;
 
 namespace Core3LayersAPI.Infrastructure.Services
 {

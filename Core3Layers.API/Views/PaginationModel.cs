@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Core3Layers.API.Models
+namespace Core3Layers.API.Views
 {
     public class PaginationModel
     {

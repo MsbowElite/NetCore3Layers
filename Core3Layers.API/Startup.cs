@@ -20,7 +20,6 @@ using Core3LayersAPI.Core.Interfaces;
 using Core3LayersAPI.Infrastructure;
 using Core3LayersAPI.Infrastructure.Services;
 using AutoMapper;
-using Core3LayersAPI.Infrastructure.Interfaces;
 using System.Threading.Tasks;
 
 namespace Core3Layers.API
@@ -104,7 +103,6 @@ namespace Core3Layers.API
             //    }
             //});
 
-            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             //services.AddIdentity<IdentityUser, IdentityRole>()
             //    .AddEntityFrameworkStores<ApplicationDbContext>()

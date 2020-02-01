@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core3LayersAPI.Core\Core3LayersAPI.Core.csproj" />
+    <ProjectReference Include="..\Core3Layers.Core\Core3Layers.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

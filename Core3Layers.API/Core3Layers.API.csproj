@@ -19,9 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core3LayersAPI.Core\Core3LayersAPI.Core.csproj" />
-    <ProjectReference Include="..\Core3LayersAPI.Infrastructure\Core3LayersAPI.Infrastructure.csproj" />
-    <ProjectReference Include="..\Core3LayersAPI.Infrastructure\Core3LayersAPI.Infrastructure.csproj" />
+    <ProjectReference Include="..\Core3Layers.Core\Core3Layers.Core.csproj" />
+    <ProjectReference Include="..\Core3Layers.Infrastructure\Core3Layers.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
