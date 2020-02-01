@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core3LayersAPI.Infrastructure
+namespace Core3Layers.Infrastructure
 {
     public class StaticRoles
     {

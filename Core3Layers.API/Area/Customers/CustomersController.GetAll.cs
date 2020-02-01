@@ -1,5 +1,5 @@
-﻿using Core3LayersAPI.Core.Entities;
-using Core3LayersAPI.Core.Models;
+﻿using Core3Layers.Core.Entities;
+using Core3Layers.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

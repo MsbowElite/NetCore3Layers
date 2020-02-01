@@ -1,10 +1,9 @@
-﻿using Core3LayersAPI.Core.Entities;
+﻿using System;
+using Core3Layers.Core.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Core3LayersAPI.Infrastructure
+namespace Core3Layers.Infrastructure
 {
     public partial class ApplicationDbContext : DbContext
     {
@@ -28,13 +27,10 @@ namespace Core3LayersAPI.Infrastructure
 
             modelBuilder.Entity<Company>(entity =>
             {
-                entity.HasKey(e => new { e.Id, e.CustomerId });
+                entity.HasKey(e => e.CustomerId)
+                    .HasName("PK_Company_1");
 
-                entity.HasIndex(e => e.Id)
-                    .HasName("CNPJ_Unique")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.CustomerId).ValueGeneratedNever();
 
                 entity.Property(e => e.Cnpj)
                     .IsRequired()
@@ -44,8 +40,8 @@ namespace Core3LayersAPI.Infrastructure
                 entity.Property(e => e.Name).HasMaxLength(100);
 
                 entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.Company)
-                    .HasForeignKey(d => d.CustomerId)
+                    .WithOne(p => p.Company)
+                    .HasForeignKey<Company>(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Company_Customer");
             });
@@ -67,30 +63,28 @@ namespace Core3LayersAPI.Infrastructure
 
             modelBuilder.Entity<CustomerPhones>(entity =>
             {
-                entity.HasKey(e => new { e.Id, e.CustomerId });
+                entity.HasKey(e => e.CustomerId)
+                    .HasName("PK_CustomerPhones_1");
 
-                entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.CustomerId).ValueGeneratedNever();
 
                 entity.Property(e => e.Phone)
                     .IsRequired()
                     .HasMaxLength(15);
 
                 entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.CustomerPhones)
-                    .HasForeignKey(d => d.CustomerId)
+                    .WithOne(p => p.CustomerPhones)
+                    .HasForeignKey<CustomerPhones>(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_CustomerPhones_Customer");
             });
 
             modelBuilder.Entity<Person>(entity =>
             {
-                entity.HasKey(e => new { e.Id, e.CustomerId });
+                entity.HasKey(e => e.CustomerId)
+                    .HasName("PK_Person_1");
 
-                entity.HasIndex(e => e.Id)
-                    .HasName("CPF_Unique")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.CustomerId).ValueGeneratedNever();
 
                 entity.Property(e => e.Cpf)
                     .IsRequired()
@@ -98,8 +92,8 @@ namespace Core3LayersAPI.Infrastructure
                     .HasMaxLength(11);
 
                 entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.Person)
-                    .HasForeignKey(d => d.CustomerId)
+                    .WithOne(p => p.Person)
+                    .HasForeignKey<Person>(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Person_Customer");
             });

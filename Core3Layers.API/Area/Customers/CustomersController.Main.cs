@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Core3LayersAPI.Core.Interfaces;
+using Core3Layers.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Core3LayersAPI": {
+    "Core3Layers": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -4,9 +4,9 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Core3LayersAPI.Core.Interfaces;
+using Core3Layers.Core.Interfaces;
 
-namespace Core3LayersAPI.Infrastructure.Services
+namespace Core3Layers.Infrastructure.Services
 {
     public class UserService : IUserService
     {

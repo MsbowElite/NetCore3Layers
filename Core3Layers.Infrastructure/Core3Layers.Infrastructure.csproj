@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AssemblyName>Core3LayersAPI.Infrastructure</AssemblyName>
-    <RootNamespace>Core3LayersAPI.Infrastructure</RootNamespace>
+    <AssemblyName>Core3Layers.Infrastructure</AssemblyName>
+    <RootNamespace>Core3Layers.Infrastructure</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

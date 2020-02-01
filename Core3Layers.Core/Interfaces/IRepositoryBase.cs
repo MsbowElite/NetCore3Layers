@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core3LayersAPI.Core.Interfaces
+namespace Core3Layers.Core.Interfaces
 {
     public interface IRepositoryBase<T>
     {

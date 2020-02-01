@@ -1,8 +1,8 @@
 ﻿using Core3Layers.Core.Interfaces;
-using Core3LayersAPI.Core.Interfaces;
-using Core3LayersAPI.Infrastructure.Repositories;
+using Core3Layers.Core.Interfaces;
+using Core3Layers.Infrastructure.Repositories;
 
-namespace Core3LayersAPI.Infrastructure
+namespace Core3Layers.Infrastructure
 {
     public class RepositoryWrapper : IRepositoryWrapper
     {

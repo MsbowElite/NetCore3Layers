@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Core3LayersAPI.Core.Interfaces;
-using Core3LayersAPI.Infrastructure;
+using Core3Layers.Core.Interfaces;
+using Core3Layers.Infrastructure;
 
-namespace Core3LayersAPI.Infrastructure
+namespace Core3Layers.Infrastructure
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {

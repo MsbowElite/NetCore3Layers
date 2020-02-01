@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Core3LayersAPI.Infrastructure
+namespace Core3Layers.Infrastructure
 {
     public class AppSettings
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Core3LayersAPI.Core.Models;
+using Core3Layers.Core.Models;
 
-namespace Core3LayersAPI.Core.Interfaces
+namespace Core3Layers.Core.Interfaces
 {
     public interface IContratosAprovacoesPendentesRepository
     {

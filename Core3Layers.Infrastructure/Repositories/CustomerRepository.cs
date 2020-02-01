@@ -1,12 +1,12 @@
 ﻿using Core3Layers.Core.Interfaces;
-using Core3LayersAPI.Core.Entities;
+using Core3Layers.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core3LayersAPI.Infrastructure.Repositories
+namespace Core3Layers.Infrastructure.Repositories
 {
     public class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository
     {

@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Core3LayersAPI.Core.Interfaces;
+using Core3Layers.Core.Interfaces;
 
-namespace Core3LayersAPI.Infrastructure
+namespace Core3Layers.Infrastructure
 {
     public class DbInitializer : IDbInitializer
     {

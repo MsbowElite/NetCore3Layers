@@ -8,16 +8,16 @@ EXPOSE 443
 
 FROM microsoft/dotnet:2.2-sdk-nanoserver-1803 AS build
 WORKDIR /src
-COPY ["Core3LayersAPI/Core3LayersAPI.csproj", "Core3LayersAPI/"]
-RUN dotnet restore "Core3LayersAPI/Core3LayersAPI.csproj"
+COPY ["Core3Layers/Core3Layers.csproj", "Core3Layers/"]
+RUN dotnet restore "Core3Layers/Core3Layers.csproj"
 COPY . .
-WORKDIR "/src/Core3LayersAPI"
-RUN dotnet build "Core3LayersAPI.csproj" -c Release -o /app
+WORKDIR "/src/Core3Layers"
+RUN dotnet build "Core3Layers.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "Core3LayersAPI.csproj" -c Release -o /app
+RUN dotnet publish "Core3Layers.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "Core3LayersAPI.dll"]
+ENTRYPOINT ["dotnet", "Core3Layers.dll"]

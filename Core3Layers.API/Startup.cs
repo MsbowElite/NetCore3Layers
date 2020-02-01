@@ -16,11 +16,9 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.ResponseCompression;
 using System.IO.Compression;
 using Core3Layers.API.Helpers;
-using Core3LayersAPI.Core.Interfaces;
-using Core3LayersAPI.Infrastructure;
-using Core3LayersAPI.Infrastructure.Services;
+using Core3Layers.Core.Interfaces;
 using AutoMapper;
-using System.Threading.Tasks;
+using Core3Layers.Infrastructure;
 
 namespace Core3Layers.API
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core3LayersAPI.Core.Models
+namespace Core3Layers.Core.Models
 {
     public class PaginatedItemsViewModel<TEntity> where TEntity : class
     {
