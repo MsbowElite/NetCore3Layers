@@ -18,9 +18,9 @@ namespace Core3LayersAPI.Infrastructure
             ApplicationDbContext = applicationDbContext;
         }
 
-        public async Task<(IEnumerable<T>, int Count)> ListAllAsync(int pageSize, int pageIndex)
+        public async Task<(IQueryable<T>, int Count)> ListAllAsync(int pageSize, int pageIndex)
         {
-            return (await ApplicationDbContext.Set<T>().Skip(pageSize * pageIndex).Take(pageSize).ToListAsync(), 
+            return (ApplicationDbContext.Set<T>().Skip(pageSize * pageIndex).Take(pageSize),
                 await ApplicationDbContext.Set<T>().CountAsync());
         }
 
