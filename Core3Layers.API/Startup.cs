@@ -19,6 +19,7 @@ using Core3Layers.API.Helpers;
 using Core3Layers.Core.Interfaces;
 using AutoMapper;
 using Core3Layers.Infrastructure;
+using Core3Layers.Infrastructure.Services;
 
 namespace Core3Layers.API
 {
@@ -76,6 +77,7 @@ namespace Core3Layers.API
                 mc.AddProfile(new MappingProfile());
             });
 
+            services.AddScoped<ICustomerService, CustomerService>();
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 

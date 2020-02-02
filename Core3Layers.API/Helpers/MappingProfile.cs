@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Core3Layers.Core.Entities;
+using Core3Layers.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +12,12 @@ namespace Core3Layers.API.Helpers
     {
         public MappingProfile()
         {
-            //CreateMap<AtendimentoDTO, Atendimento>(MemberList.Source);
-            //CreateMap<Atendimento, AtendimentoDTO>(MemberList.Source);
-            //CreateMap<ConsultarContratosAprovacoesPendentesViewModel, Abastecimento>(MemberList.Source);
-            //CreateMap<Entities.Users, UserModel>().ForMember(x => x.Password, opt => opt.Ignore());
-            //CreateMap<Company, Entities.Companies>(MemberList.Source);
-            //CreateMap<Entities.Users, UserAuthModel>(MemberList.Source);
+            CreateMap<CustomerDTO, Customer>(MemberList.Source);
+            CreateMap<Customer, CustomerDTO>(MemberList.Source);
+            CreateMap<CustomerCompanyDTO, Company>(MemberList.Source);
+            CreateMap<Company, CustomerCompanyDTO>(MemberList.Source);
+            CreateMap<CustomerPersonDTO, Person>(MemberList.Source);
+            CreateMap<Person, CustomerPersonDTO>(MemberList.Source);
         }
     }
 }

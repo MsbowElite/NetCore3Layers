@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Core3Layers.Core.Interfaces
 {
-    public interface IUserService
+    public interface IPersonRepository
     {
-        string Authentication();
     }
 }

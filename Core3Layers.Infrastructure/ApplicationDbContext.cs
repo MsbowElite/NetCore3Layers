@@ -63,18 +63,18 @@ namespace Core3Layers.Infrastructure
 
             modelBuilder.Entity<CustomerPhones>(entity =>
             {
-                entity.HasKey(e => e.CustomerId)
+                entity.HasKey(e => new { e.Id, e.CustomerId })
                     .HasName("PK_CustomerPhones_1");
 
-                entity.Property(e => e.CustomerId).ValueGeneratedNever();
+                entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.Phone)
                     .IsRequired()
                     .HasMaxLength(15);
 
                 entity.HasOne(d => d.Customer)
-                    .WithOne(p => p.CustomerPhones)
-                    .HasForeignKey<CustomerPhones>(d => d.CustomerId)
+                    .WithMany(p => p.CustomerPhones)
+                    .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_CustomerPhones_Customer");
             });

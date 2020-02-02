@@ -12,5 +12,7 @@ namespace Core3Layers.Core.Models
         public string PostalCode { get; set; }
         public bool Stage { get; set; }
         public Byte Type { get; set; }
+        public CustomerCompanyDTO Company { get; set; }
+        public CustomerPersonDTO Person { get; set; }
     }
 }
