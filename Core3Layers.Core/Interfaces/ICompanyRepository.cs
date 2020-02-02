@@ -8,6 +8,6 @@ namespace Core3Layers.Core.Interfaces
 {
     public interface ICompanyRepository
     {
-        Task CreateCompanyAsync(Company company);
+        void CreateCompany(Company company);
     }
 }

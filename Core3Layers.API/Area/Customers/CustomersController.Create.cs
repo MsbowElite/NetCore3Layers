@@ -24,7 +24,8 @@ namespace Core3Layers.API.Area.Customers
                 await _customerService.CreateCustomerAsync(customer);
 
                 //dish = _mapper.Map<Entities.Dish, DishDTO>(disheMap);
-                return CreatedAtAction(nameof(GetById), new { customer.Id });
+                //return CreatedAtAction(nameof(GetById), new { customer.Id });
+                return Ok();
             }
             catch (Exception ex)
             {

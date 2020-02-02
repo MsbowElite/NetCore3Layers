@@ -8,6 +8,6 @@ namespace Core3Layers.Core.Interfaces
 {
     public interface IPersonRepository
     {
-        Task CreatePersonAsync(Person person);
+        void CreatePerson(Person person);
     }
 }

@@ -14,10 +14,9 @@ namespace Core3Layers.Infrastructure.Repositories
         {
         }
 
-        public async Task CreateCustomerPhoneAsync(CustomerPhones customerPhone)
+        public void CreateCustomerPhone(CustomerPhones customerPhone)
         {
             Create(customerPhone);
-            await SaveAsync();
         }
     }
 }

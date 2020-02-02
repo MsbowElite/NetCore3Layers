@@ -25,18 +25,21 @@ namespace Core3Layers.Infrastructure.Services
             try
             {
                 var customer = _mapper.Map<CustomerDTO, Customer>(customerDTO);
-                await _rw.Customer.CreateCustomerAsync(customer);
+                _rw.Customer.CreateCustomer(customer);
+                
+                await _rw.SaveChangesAsync();
 
                 var company = _mapper.Map<CustomerCompanyDTO, Company>(customerDTO.Company);
                 if(company != null)
                 {
-                    await AddCompanyAsync(company, customer.Id);
+                    company.Customer = customer;
+                    AddCompany(company, customer.Id);
                 }
 
                 var person = _mapper.Map<CustomerPersonDTO, Person>(customerDTO.Person);
                 if (person != null)
                 {
-                    await AddPersonAsync(person, customer.Id);
+                    AddPerson(person, customer.Id);
                 }
 
                 var phones = _mapper.Map<List<CustomerPhoneDTO>, List<CustomerPhones>>(customerDTO.Phones);
@@ -44,9 +47,11 @@ namespace Core3Layers.Infrastructure.Services
                 {
                     foreach(var phone in phones)
                     {
-                        await AddCustomerPhoneAsync(phone, customer.Id);
+                        AddCustomerPhone(phone, customer.Id);
                     }
                 }
+
+                await _rw.SaveChangesAsync();
 
                 return customer.Id;
             }catch(Exception ex)
@@ -55,22 +60,22 @@ namespace Core3Layers.Infrastructure.Services
             }            
         }
 
-        private async Task AddCompanyAsync(Company company, Guid customerId)
+        private void AddCompany(Company company, Guid customerId)
         {
             company.CustomerId = customerId;
-            await _rw.Company.CreateCompanyAsync(company);
+            _rw.Company.CreateCompany(company);
         }
 
-        private async Task AddPersonAsync(Person person, Guid customerId)
+        private void AddPerson(Person person, Guid customerId)
         {
             person.CustomerId = customerId;
-            await _rw.Person.CreatePersonAsync(person);
+            _rw.Person.CreatePerson(person);
         }
 
-        private async Task AddCustomerPhoneAsync(CustomerPhones customerPhone, Guid customerId)
+        private void AddCustomerPhone(CustomerPhones customerPhone, Guid customerId)
         {
             customerPhone.CustomerId = customerId;
-            await _rw.CustomerPhones.CreateCustomerPhoneAsync(customerPhone);
+            _rw.CustomerPhones.CreateCustomerPhone(customerPhone);
         }
     }
 }

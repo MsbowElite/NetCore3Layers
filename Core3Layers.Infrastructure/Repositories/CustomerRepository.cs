@@ -29,10 +29,9 @@ namespace Core3Layers.Infrastructure.Repositories
             return await FindByConditionAsync(c => c.Id == customerId);
         }
 
-        public async Task CreateCustomerAsync(Customer customer)
+        public void CreateCustomer(Customer customer)
         {
             Create(customer);
-            await SaveAsync();
         }
 
         public async Task DeleteCustomerAsync(Guid customerId)

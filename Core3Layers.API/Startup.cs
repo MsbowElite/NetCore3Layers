@@ -20,6 +20,12 @@ using Core3Layers.Core.Interfaces;
 using AutoMapper;
 using Core3Layers.Infrastructure;
 using Core3Layers.Infrastructure.Services;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using Core3Layers.Core.Entities;
+using Core3Layers.API.Validators;
+using Core3Layers.Core.Models;
+using System.Reflection;
 
 namespace Core3Layers.API
 {
@@ -49,6 +55,13 @@ namespace Core3Layers.API
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
+
+            //services.AddTransient<IValidator<CustomerPersonDTO>, CustomerPersonDTOValidator>();
+
+            services.AddMvc().AddFluentValidation(fv => {
+                fv.ImplicitlyValidateChildProperties = true;
+                fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            });
 
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();

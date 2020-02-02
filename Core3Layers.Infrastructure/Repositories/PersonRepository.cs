@@ -14,10 +14,9 @@ namespace Core3Layers.Infrastructure.Repositories
         {
         }
 
-        public async Task CreatePersonAsync(Person person)
+        public void CreatePerson(Person person)
         {
             Create(person);
-            await SaveAsync();
         }
     }
 }

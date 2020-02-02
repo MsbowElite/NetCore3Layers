@@ -9,7 +9,7 @@ namespace Core3Layers.Core.Interfaces
     public interface ICustomerRepository
     {
         Task<(List<Customer>, int Count)> GetAllCustomersAsync(int pageSize, int pageIndex);
-        Task CreateCustomerAsync(Customer customer);
+        void CreateCustomer(Customer customer);
         Task DeleteCustomerAsync(Guid customerId);
         Task<Customer> GetCustomerByIdAsync(Guid customerId);
     }

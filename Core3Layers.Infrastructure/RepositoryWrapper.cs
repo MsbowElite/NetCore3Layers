@@ -1,5 +1,6 @@
 ﻿using Core3Layers.Core.Interfaces;
 using Core3Layers.Infrastructure.Repositories;
+using System.Threading.Tasks;
 
 namespace Core3Layers.Infrastructure
 {
@@ -19,5 +20,10 @@ namespace Core3Layers.Infrastructure
         public ICompanyRepository Company => _companyRepository ?? (_companyRepository = new CompanyRepository(_applicationDbContext));
         public IPersonRepository Person => _personRepository ?? (_personRepository = new PersonRepository(_applicationDbContext));
         public ICustomerPhonesRepository CustomerPhones => _customerPhonesRepository ?? (_customerPhonesRepository = new CustomerPhonesRepository(_applicationDbContext));
+
+        public async Task SaveChangesAsync()
+        {
+            await _applicationDbContext.SaveChangesAsync();
+        }
     }
 }

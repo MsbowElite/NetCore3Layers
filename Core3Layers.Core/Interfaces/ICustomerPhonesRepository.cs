@@ -8,6 +8,6 @@ namespace Core3Layers.Core.Interfaces
 {
     public interface ICustomerPhonesRepository
     {
-        Task CreateCustomerPhoneAsync(CustomerPhones customerPhone);
+        void CreateCustomerPhone(CustomerPhones customerPhone);
     }
 }

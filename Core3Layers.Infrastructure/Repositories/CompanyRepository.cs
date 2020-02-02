@@ -14,10 +14,9 @@ namespace Core3Layers.Infrastructure.Repositories
         {
         }
 
-        public async Task CreateCompanyAsync(Company company)
+        public void CreateCompany(Company company)
         {
             Create(company);
-            await SaveAsync();
         }
     }
 }

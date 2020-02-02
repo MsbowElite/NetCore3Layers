@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Core3Layers.Core.Interfaces
 {
@@ -11,5 +12,6 @@ namespace Core3Layers.Core.Interfaces
         ICompanyRepository Company { get; }
         IPersonRepository Person { get; }
         ICustomerPhonesRepository CustomerPhones { get; }
+        Task SaveChangesAsync();
     }
 }
