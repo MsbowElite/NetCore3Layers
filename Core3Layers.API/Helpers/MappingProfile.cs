@@ -18,6 +18,8 @@ namespace Core3Layers.API.Helpers
             CreateMap<Company, CustomerCompanyDTO>(MemberList.Source);
             CreateMap<CustomerPersonDTO, Person>(MemberList.Source);
             CreateMap<Person, CustomerPersonDTO>(MemberList.Source);
+            CreateMap<CustomerPhoneDTO, CustomerPhones>(MemberList.Source);
+            CreateMap<CustomerPhones, CustomerPhoneDTO>(MemberList.Source);
         }
     }
 }

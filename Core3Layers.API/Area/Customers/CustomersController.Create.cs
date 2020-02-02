@@ -1,4 +1,5 @@
 ﻿using Core3Layers.Core.Entities;
+using Core3Layers.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -11,19 +12,19 @@ namespace Core3Layers.API.Area.Customers
 {
     public partial class CustomersController
     {
-        [ProducesResponseType(typeof(Customer), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody]Customer customer)
+        public async Task<IActionResult> Create([FromBody]CustomerDTO customer)
         {
             if (!ModelState.IsValid) return BadRequest();
             try
             {
                 //var disheMap = _mapper.Map<DishDTO, Entities.Dish>(dish);
-                await _rw.Customer.CreateCustomerAsync(customer);
+                await _customerService.CreateCustomerAsync(customer);
 
                 //dish = _mapper.Map<Entities.Dish, DishDTO>(disheMap);
-                return CreatedAtAction(nameof(GetById), new { customer.Id }, customer);
+                return CreatedAtAction(nameof(GetById), new { customer.Id });
             }
             catch (Exception ex)
             {

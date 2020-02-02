@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Core3Layers.Infrastructure.Repositories
 {
-    public class CompanyRepository : RepositoryBase<Company>, ICompanyRepository
+    public class CustomerPhonesRepository : RepositoryBase<CustomerPhones>, ICustomerPhonesRepository
     {
-        public CompanyRepository(ApplicationDbContext applicationDbContext)
+        public CustomerPhonesRepository(ApplicationDbContext applicationDbContext)
             : base(applicationDbContext)
         {
         }
 
-        public async Task CreateCompanyAsync(Company company)
+        public async Task CreateCustomerPhoneAsync(CustomerPhones customerPhone)
         {
-            Create(company);
+            Create(customerPhone);
             await SaveAsync();
         }
     }

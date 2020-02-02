@@ -12,11 +12,13 @@ namespace Core3Layers.API.Area.Customers
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public partial class CustomersController : ControllerBase
     {
+        private readonly ICustomerService _customerService;
         private readonly IRepositoryWrapper _rw;
         private readonly IMapper _mapper;
         private readonly ILogger _logger;
-        public CustomersController(IRepositoryWrapper rw, IMapper mapper, ILogger<CustomersController> logger)
+        public CustomersController(ICustomerService customerService , IRepositoryWrapper rw, IMapper mapper, ILogger<CustomersController> logger)
         {
+            _customerService = customerService;
             _rw = rw;
             _mapper = mapper;
             _logger = logger;

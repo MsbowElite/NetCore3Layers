@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Core3Layers.Core.Interfaces
 {
-    public interface IPersonRepository
+    public interface ICustomerPhonesRepository
     {
-        Task CreatePersonAsync(Person person);
+        Task CreateCustomerPhoneAsync(CustomerPhones customerPhone);
     }
 }

@@ -14,5 +14,6 @@ namespace Core3Layers.Core.Models
         public Byte Type { get; set; }
         public CustomerCompanyDTO Company { get; set; }
         public CustomerPersonDTO Person { get; set; }
+        public List<CustomerPhoneDTO> Phones { get; set; }
     }
 }

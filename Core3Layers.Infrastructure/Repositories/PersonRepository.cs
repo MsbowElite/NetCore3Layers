@@ -3,6 +3,7 @@ using Core3Layers.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Core3Layers.Infrastructure.Repositories
 {
@@ -11,6 +12,12 @@ namespace Core3Layers.Infrastructure.Repositories
         public PersonRepository(ApplicationDbContext applicationDbContext)
             : base(applicationDbContext)
         {
+        }
+
+        public async Task CreatePersonAsync(Person person)
+        {
+            Create(person);
+            await SaveAsync();
         }
     }
 }
