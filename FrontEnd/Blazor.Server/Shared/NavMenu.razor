@@ -1,0 +1,29 @@
+﻿
+<div class="bg-light" id="sidebar-wrapper">
+    <div class="sidebar-logo">
+    </div>
+    <div class="profile">
+    </div>
+    <div class="menu list-group list-group-flush">
+        <NavLink class="list-group-item list-group-item-action bg-light" href="/" Match="NavLinkMatch.All">
+            <span class="oi oi-home" aria-hidden="true"></span> Home
+        </NavLink>
+        <NavLink class="list-group-item list-group-item-action bg-light" href="/customeroverview">
+            <span class="oi oi-list-rich" aria-hidden="true"></span> Customers
+        </NavLink>
+        <NavLink class="list-group-item list-group-item-action bg-light" href="/customeredit">
+            <span class="oi oi-list-rich" aria-hidden="true"></span> Add new Customer
+        </NavLink>
+    </div>
+</div>
+
+@code {
+    bool collapseNavMenu = true;
+
+    string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

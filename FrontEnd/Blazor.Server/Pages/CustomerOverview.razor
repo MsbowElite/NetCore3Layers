@@ -1,0 +1,57 @@
+﻿@page "/customeroverview"
+@inherits CustomerOverviewBase
+
+<h1 class="page-title">All customers</h1>
+
+@if (Customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Name</th>
+                <th>PostalCode</th>
+                <th>Type</th>
+                <th>CPF/CNPJ</th>
+                <th>Stage</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Customers)
+            {
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+                <td>@customer.PostalCode</td>
+                <td>@customer.Type</td>
+                @if (customer.Type == 0)
+                {
+                    <td>@customer.Person?.CPF</td>
+                }
+                else
+                {
+                    <td>@customer.Company?.CNPJ</td>
+                }
+                <td>@customer.Stage</td>
+                <td>
+                    <NavLink href="@($"customerdetail/{customer.Id}")" class="btn btn-primary table-btn">
+                        <i class="fas fa-info-circle"></i>
+                    </NavLink>
+                    <NavLink href="@($"customeredit/{customer.Id}")" class="btn btn-primary table-btn">
+                        <i class="fas fa-edit"></i>
+                    </NavLink>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<button @onclick="QuickAddCustomer" class="btn btn-dark table-btn quick-add-btn">&nbsp;&nbsp;+&nbsp;&nbsp;</button>
+
+<AddCustomerDialog @ref="AddCustomerDialog" CloseEventCallback="@AddCustomerDialog_OnDialogClose"></AddCustomerDialog>

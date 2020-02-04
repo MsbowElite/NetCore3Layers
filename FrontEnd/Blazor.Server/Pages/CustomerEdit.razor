@@ -1,0 +1,68 @@
+﻿@page "/customeredit"
+@page "/customeredit/{CustomerId}"
+@using Blazor.Shared
+@inherits CustomerEditBase
+
+<section class="Customer-edit">
+    @if (!Saved)
+    {
+        <h1 class="page-title">Details for @Customer.Name</h1>
+
+        <EditForm Model="@Customer" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="form-group row">
+                <label for="lastName" class="col-sm-3">Name: </label>
+                <InputText id="lastName" class="form-control col-sm-8" @bind-Value="@Customer.Name" placeholder="Enter name" @ref="LastNameInputText"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Customer.Name)" />
+            </div>
+            <div class="form-group row">
+                <label for="firstName" class="col-sm-3">Postal code: </label>
+                <InputText id="firstName" class="form-control col-sm-8" @bind-Value="@Customer.PostalCode" placeholder="Enter postal code"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Customer.PostalCode)" />
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label for="birthdate" class="col-sm-3">Stage: </label>
+                        <InputCheckbox id="birthdate" class="form-control col-sm-8" @bind-Value="@Customer.Stage" placeholder="Enter stage"></InputCheckbox>
+                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Customer.Stage)" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-3">Email: </label>
+                        <InputNumber id="email" class="form-control col-sm-8" @bind-Value="@Customer.Type" placeholder="Enter email"></InputNumber>
+                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Customer.Type)" />
+                    </div>
+                </div>
+            </div>
+            @*<div class="form-group row">
+                    <label for="gender" class="col-sm-3">Gender: </label>
+                    <InputSelect id="gender" class="form-control col-sm-8" @bind-Value=@Customer.Gender>
+                        <option value="@(CustomerType.Person)">Person</option>
+                        <option value="@(CustomerType.Company)">Company</option>
+                    </InputSelect>
+                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Customer.Gender)" />
+                </div>*@
+
+            <button type="submit" class="btn btn-primary edit-btn">Save customer</button>
+            <a class="btn btn-outline-primary edit-outline-btn" @onclick="@NavigateToOverview">Cancel</a>
+            @if (Customer.Id != Guid.Empty)
+            {
+                <a class="btn btn-danger" @onclick="@DeleteCustomer">
+                    Delete
+                </a>
+            }
+        </EditForm>
+
+    }
+    else
+    {
+        <div class="alert @StatusClass">@Message</div>
+        <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
+
+    }
+</section>
