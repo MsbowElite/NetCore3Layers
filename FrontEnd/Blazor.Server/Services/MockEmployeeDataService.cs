@@ -8,11 +8,6 @@ namespace Blazor.Server.Services
 {
     public class MockCustomerDataService : ICustomerDataService
     {
-        public Task<CustomerDTO> AddCustomer(CustomerDTO customer)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task DeleteCustomer(Guid customerId)
         {
             throw new NotImplementedException();
@@ -24,6 +19,11 @@ namespace Blazor.Server.Services
         }
 
         public Task<CustomerDTO> GetCustomerDetails(Guid customerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Guid> ICustomerDataService.AddCustomer(CustomerDTO customer)
         {
             throw new NotImplementedException();
         }

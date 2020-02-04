@@ -6,6 +6,7 @@ using Blazor.Server.Services;
 using Blazor.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.JSInterop;
 
 namespace Blazor.Server.Pages
 {
@@ -32,8 +33,28 @@ namespace Blazor.Server.Pages
         protected string StatusClass = string.Empty;
         protected bool Saved;
 
-        public List<Country> Countries { get; set; } = new List<Country>();
-        public List<JobCategory> JobCategories { get; set; } = new List<JobCategory>();
+        private CustomerType _customerType;
+        protected CustomerType CustomerType 
+        {
+            get
+            {
+                return _customerType;
+            }
+            set
+            {
+                _customerType = value;
+                var typeInt = (int)_customerType;
+                if (typeInt == 1)
+                {
+                    SetupPerson();
+                }
+                else if (typeInt == 2)
+                {
+                    SetupCompany();
+                }
+                Customer.Type = typeInt;
+            }
+        }
 
         protected override async Task OnInitializedAsync()
         {
@@ -52,7 +73,7 @@ namespace Blazor.Server.Pages
             if (Customer.Id == Guid.Empty) //new
             {
                 var addedCustomer = await CustomerDataService.AddCustomer(Customer);
-                if (addedCustomer != null)
+                if (addedCustomer != Guid.Empty)
                 {
                     StatusClass = "alert-success";
                     Message = "New Customer added successfully.";
@@ -86,6 +107,18 @@ namespace Blazor.Server.Pages
         protected void NavigateToOverview()
         {
             NavigationManager.NavigateTo("/customeroverview");
+        }
+
+        private void SetupPerson()
+        {
+            Customer.Person = new CustomerPersonDTO();
+            Customer.Company = null;
+        }
+
+        private void SetupCompany()
+        {
+            Customer.Company = new CustomerCompanyDTO();
+            Customer.Person = null;
         }
     }
 }

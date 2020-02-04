@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Blazor.Server.Components;
 using Blazor.Server.Services;
 using Blazor.Shared;
 using Microsoft.AspNetCore.Components;
@@ -19,8 +18,6 @@ namespace Blazor.Server.Pages
 
         public List<CustomerDTO> Customers { get; set; }
 
-        public AddCustomerDialogBase AddCustomerDialog { get; set; }
-
         protected override async Task OnInitializedAsync()
         {
             Customers = (await CustomerDataService.GetAllCustomers()).Data;
@@ -32,11 +29,6 @@ namespace Blazor.Server.Pages
         {
             Customers = (await CustomerDataService.GetAllCustomers()).Data;
             StateHasChanged();
-        }
-
-        protected void QuickAddCustomer()
-        {
-            AddCustomerDialog.Show();
         }
     }
 }

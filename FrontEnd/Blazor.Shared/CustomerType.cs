@@ -2,7 +2,8 @@
 {
     public enum CustomerType
     {
-        Person,
-        Company
+        Select = 0,
+        Person = 1,
+        Company = 2
     }
 }

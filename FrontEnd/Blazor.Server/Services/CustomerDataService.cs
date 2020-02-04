@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Blazor.Shared;
+using Newtonsoft.Json;
 
 namespace Blazor.Server.Services
 {
@@ -23,7 +22,7 @@ namespace Blazor.Server.Services
             HandleResponseCode((int)responseMessage.StatusCode);
 
             var json = await responseMessage.Content.ReadAsStringAsync();
-            return await Task.Run(() => Newtonsoft.Json.JsonConvert.DeserializeObject<PaginatedItemsViewModel<CustomerDTO>>(json));
+            return await Task.Run(() => JsonConvert.DeserializeObject<PaginatedItemsViewModel<CustomerDTO>>(json));
         }
 
         public async Task<CustomerDTO> GetCustomerDetails(Guid customerId)
@@ -35,19 +34,20 @@ namespace Blazor.Server.Services
             return await Task.Run(() => Newtonsoft.Json.JsonConvert.DeserializeObject<CustomerDTO>(json));
         }
 
-        public async Task<CustomerDTO> AddCustomer(CustomerDTO customer)
+        public async Task<Guid> AddCustomer(CustomerDTO customer)
         {
-            var customerJson =
-                new StringContent(JsonSerializer.Serialize(customer), Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync("api/Customer", customerJson);
+            var serializedCustomer = JsonConvert.SerializeObject(customer);
+
+            var response = await _httpClient.PostAsync($"api/Customers", new StringContent(serializedCustomer, Encoding.UTF8, "application/json"));
 
             if (response.IsSuccessStatusCode)
             {
-                //return await JsonSerializer.DeserializeAsync<Customer>(await response.Content.ReadAsStreamAsync());
+                var json = await response.Content.ReadAsStringAsync();
+                return await Task.Run(() => JsonConvert.DeserializeObject<Guid>(json));
             }
 
-            return null;
+            return Guid.Empty;
         }
 
         public async Task DeleteCustomer(Guid customerId)

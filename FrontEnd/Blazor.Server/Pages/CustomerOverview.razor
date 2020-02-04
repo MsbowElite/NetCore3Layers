@@ -14,6 +14,7 @@ else
             <tr>
                 <th>Customer ID</th>
                 <th>Name</th>
+                <th>Email</th>
                 <th>PostalCode</th>
                 <th>Type</th>
                 <th>CPF/CNPJ</th>
@@ -27,6 +28,7 @@ else
             <tr>
                 <td>@customer.Id</td>
                 <td>@customer.Name</td>
+                <td>@customer.Email</td>
                 <td>@customer.PostalCode</td>
                 <td>@customer.Type</td>
                 @if (customer.Type == 0)
@@ -51,7 +53,3 @@ else
         </tbody>
     </table>
 }
-
-<button @onclick="QuickAddCustomer" class="btn btn-dark table-btn quick-add-btn">&nbsp;&nbsp;+&nbsp;&nbsp;</button>
-
-<AddCustomerDialog @ref="AddCustomerDialog" CloseEventCallback="@AddCustomerDialog_OnDialogClose"></AddCustomerDialog>

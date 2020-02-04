@@ -9,7 +9,7 @@ namespace Blazor.Server.Services
     {
         Task<PaginatedItemsViewModel<CustomerDTO>> GetAllCustomers();
         Task<CustomerDTO> GetCustomerDetails(Guid customerId);
-        Task<CustomerDTO> AddCustomer(CustomerDTO customer);
+        Task<Guid> AddCustomer(CustomerDTO customer);
         Task DeleteCustomer(Guid customerId);
     }
 }
