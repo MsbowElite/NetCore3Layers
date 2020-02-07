@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Blazor.Server.Services;
 using Blazor.Shared;
+using FluentValidation;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.JSInterop;
@@ -32,6 +33,8 @@ namespace Blazor.Server.Pages
         protected string StatusClass = string.Empty;
         protected bool Saved;
 
+        private IValidator validator;
+
         private CustomerType _customerType;
         [Required]
         protected CustomerType CustomerType 
@@ -44,14 +47,20 @@ namespace Blazor.Server.Pages
             {
                 _customerType = value;
                 var typeInt = (int)_customerType;
-                if (typeInt == 1)
+
+                switch (typeInt)
                 {
-                    SetupPerson();
+                    case 1:
+                        SetupPerson();
+                        break;
+                    case 2:
+                        SetupCompany();
+                        break;
+                    default:
+                        CleanCustomerTypes();
+                        break;
                 }
-                else if (typeInt == 2)
-                {
-                    SetupCompany();
-                }
+
                 Customer.Type = typeInt;
             }
         }
@@ -119,6 +128,12 @@ namespace Blazor.Server.Pages
         {
             Customer.Company = new CustomerCompanyDTO();
             Customer.Person = null;
+        }
+
+        private void CleanCustomerTypes()
+        {
+            Customer.Person = null;
+            Customer.Company = null;
         }
     }
 }

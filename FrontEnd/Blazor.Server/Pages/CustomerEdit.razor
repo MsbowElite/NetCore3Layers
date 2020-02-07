@@ -2,6 +2,7 @@
 @page "/customeredit/{CustomerId}"
 @using Blazor.Shared
 @using Syncfusion.EJ2.Blazor.Inputs
+@using Blazor.Server.Validators
 @inherits CustomerEditBase
 
 <section class="Customer-edit">
@@ -10,7 +11,7 @@
         <h1 class="page-title">Details for @Customer.Name</h1>
 
         <EditForm Model="@Customer" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
-
+            <FluentValidator TValidator="CustomerValidator" />
             <DataAnnotationsValidator />
             <ValidationSummary />
             <div class="form-group row">
@@ -25,7 +26,7 @@
 
             <div class="form-group row">
                 <label for="postalCode" class="col-sm-3">Postal code: </label>
-                <EjsMaskedTextBox ID="postalCode" Mask="99.999-999" CssClass="form-control col-sm-8" @bind-Value="@Customer.PostalCode"/>
+                <EjsMaskedTextBox ID="postalCode" Mask="99.999-999" CssClass="form-control col-sm-8" @bind-Value="@Customer.PostalCode" />
             </div>
 
             <div class="form-group row">
@@ -51,7 +52,7 @@
             {
                 <div class="form-group row">
                     <label for="personCPF" class="col-sm-3">CPF: </label>
-                    <EjsMaskedTextBox ID="personCPF" Mask="999.999.999-99" CssClass="form-control col-sm-8" @bind-Value="@Customer.Person.CPF"/>
+                    <EjsMaskedTextBox ID="personCPF" Mask="999.999.999-99" CssClass="form-control col-sm-8" @bind-Value="@Customer.Person.CPF" />
                 </div>
             }
             else if (Customer.Type == 2)

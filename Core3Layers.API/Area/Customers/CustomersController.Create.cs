@@ -20,11 +20,9 @@ namespace Core3Layers.API.Area.Customers
             if (!ModelState.IsValid) return BadRequest();
             try
             {
-                //var disheMap = _mapper.Map<DishDTO, Entities.Dish>(dish);
                 await _customerService.CreateCustomerAsync(customer);
 
-                //dish = _mapper.Map<Entities.Dish, DishDTO>(disheMap);
-                return CreatedAtAction(nameof(GetById), new { customer.Id });
+                return CreatedAtAction(nameof(GetById), new { customer.Id }, null);
             }
             catch (Exception ex)
             {

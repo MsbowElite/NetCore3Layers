@@ -29,6 +29,8 @@ namespace Core3Layers.Infrastructure.Services
                 
                 await _rw.SaveChangesAsync();
 
+                customerDTO.Id = customer.Id;
+
                 var company = _mapper.Map<CustomerCompanyDTO, Company>(customerDTO.Company);
                 if(company != null)
                 {
