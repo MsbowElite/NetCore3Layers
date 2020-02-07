@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazor.Server.Services;
@@ -20,8 +21,6 @@ namespace Blazor.Server.Pages
         [Parameter]
         public string CustomerId { get; set; }
 
-        public InputText LastNameInputText { get; set; }
-
         public CustomerDTO Customer { get; set; } = new CustomerDTO();
 
         //needed to bind to select to value
@@ -34,6 +33,7 @@ namespace Blazor.Server.Pages
         protected bool Saved;
 
         private CustomerType _customerType;
+        [Required]
         protected CustomerType CustomerType 
         {
             get

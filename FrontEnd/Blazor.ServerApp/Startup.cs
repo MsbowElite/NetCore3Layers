@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Syncfusion.EJ2.Blazor;
 
 namespace Blazor.ServerApp
 {
@@ -24,8 +25,9 @@ namespace Blazor.ServerApp
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddSyncfusionBlazor();
 
-        
+
             //services.AddScoped<ICustomerDataService, MockCustomerDataService>();
             services.AddHttpClient<ICustomerDataService, CustomerDataService>(client =>
             {
@@ -36,6 +38,9 @@ namespace Blazor.ServerApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //Register Syncfusion license
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjA3MzM4QDMxMzcyZTM0MmUzMFBDM2hINGxOeHc0NE1kdkxJUG8yclZPK0dUS0VVL2tiQUdxWEQ2TWR3T0U9");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

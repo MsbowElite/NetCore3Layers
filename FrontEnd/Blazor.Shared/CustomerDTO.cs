@@ -15,7 +15,7 @@ namespace Blazor.Shared
         [StringLength(100, ErrorMessage = "Email is too long.")]
         [EmailAddress]
         public string Email { get; set; }
-        [StringLength(7, ErrorMessage = "Postal code is too long.")]
+        [StringLength(8, ErrorMessage = "Postal code is too long.")]
         public string PostalCode { get; set; }
         [Required]
         public bool Stage { get; set; }
