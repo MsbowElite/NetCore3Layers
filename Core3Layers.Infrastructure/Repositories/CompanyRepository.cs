@@ -14,6 +14,11 @@ namespace Core3Layers.Infrastructure.Repositories
         {
         }
 
+        public async Task<(IEnumerable<Company>, int Count)> GetCompanies(int pageNumber = 1, int pageSize = 5)
+        {
+            return await ListAllAsync(pageNumber, pageSize);
+        }
+
         public void CreateCompany(Company company)
         {
             Create(company);

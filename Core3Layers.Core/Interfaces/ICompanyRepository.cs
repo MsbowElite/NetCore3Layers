@@ -9,5 +9,6 @@ namespace Core3Layers.Core.Interfaces
     public interface ICompanyRepository
     {
         void CreateCompany(Company company);
+        Task<(IEnumerable<Company>, int Count)> GetCompanies(int pageSize, int pageIndex);
     }
 }

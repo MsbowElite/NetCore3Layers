@@ -9,7 +9,7 @@ using Core3Layers.Infrastructure;
 
 namespace Core3Layers.Infrastructure
 {
-    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IDisposable, IRepositoryBase<T> where T : class
     {
         protected ApplicationDbContext ApplicationDbContext { get; set; }
 
@@ -57,6 +57,24 @@ namespace Core3Layers.Infrastructure
         public async Task SaveAsync()
         {
             await this.ApplicationDbContext.SaveChangesAsync();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (ApplicationDbContext != null)
+                {
+                    ApplicationDbContext.Dispose();
+                    ApplicationDbContext = null;
+                }
+            }
         }
     }
 }
